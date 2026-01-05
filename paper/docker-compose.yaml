@@ -1,0 +1,17 @@
+name: antilavacast
+
+services:
+
+  paper:
+    hostname: paper
+    image: itzg/minecraft-server
+    environment:
+      - EULA=TRUE
+      - TYPE=PAPER
+      - VERSION=1.21.10
+      - ONLINE_MODE=FALSE
+      - JVM_OPTS=-Dlog4j.configurationFile=log4j2.xml
+    #      - JVM_XX_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+    volumes:
+      - ./run/paper:/data/
+

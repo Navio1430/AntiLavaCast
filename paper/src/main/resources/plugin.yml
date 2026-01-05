@@ -1,0 +1,7 @@
+#file: noinspection PluginYml,YAMLSchemaValidation
+name: AntiLavaCast
+version: ${version}
+main: ${group}.paper.AntiLavaCast
+description: AntiLavaCast plugin
+api-version: ${apiVersion}
+authors: [ "Navio1430" ]
