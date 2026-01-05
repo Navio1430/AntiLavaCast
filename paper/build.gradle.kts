@@ -42,7 +42,7 @@ tasks.shadowJar {
 }
 
 dependencies {
-  compileOnly("io.papermc.paper:paper-api:1.21.7-R0.1-SNAPSHOT")
+  compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
 
   testImplementation(kotlin("test"))
 }
@@ -61,7 +61,7 @@ tasks.withType<ProcessResources> {
     expand(
         mapOf(
             "version" to version,
-            "apiVersion" to "1.21.7",
+            "apiVersion" to "1.19",
             "group" to rootProject.group
         )
     )

@@ -5,10 +5,13 @@ services:
   paper:
     hostname: paper
     image: itzg/minecraft-server
+    ports:
+      - "25565:25565"
+      - "5005:5005"
     environment:
       - EULA=TRUE
       - TYPE=PAPER
-      - VERSION=1.21.10
+      - VERSION=1.20.4
       - ONLINE_MODE=FALSE
       - JVM_OPTS=-Dlog4j.configurationFile=log4j2.xml
     #      - JVM_XX_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
