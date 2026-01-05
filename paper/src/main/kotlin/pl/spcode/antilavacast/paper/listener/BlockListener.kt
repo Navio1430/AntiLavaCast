@@ -32,13 +32,13 @@ class BlockListener: Listener {
   }
 
   fun clearWaterAboveRecursive(block: Block) {
-    getWaterBlocksAround(block).forEach {
+    getWaterBlocksAbove(block).forEach {
       it.type = Material.AIR
       clearWaterAboveRecursive(it)
     }
   }
 
-  fun getWaterBlocksAround(block: Block): List<Block> {
+  fun getWaterBlocksAbove(block: Block): List<Block> {
     val blocks = mutableListOf<Block>()
 
     for (x in -1..1) {
