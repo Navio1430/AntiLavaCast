@@ -17,6 +17,7 @@ class BlockListener: Listener {
       if (shouldBlockRecursive(location.block, threshold)) {
         event.isCancelled = true
         clearLavaUnderRecursive(location.block)
+        clearWaterAboveRecursive(location.block)
         return
       }
     }
@@ -28,6 +29,33 @@ class BlockListener: Listener {
       it.type = Material.AIR
       clearLavaUnderRecursive(it)
     }
+  }
+
+  fun clearWaterAboveRecursive(block: Block) {
+    getWaterBlocksAround(block).forEach {
+      it.type = Material.AIR
+      clearWaterAboveRecursive(it)
+    }
+  }
+
+  fun getWaterBlocksAround(block: Block): List<Block> {
+    val blocks = mutableListOf<Block>()
+
+    for (x in -1..1) {
+      for (z in -1..1) {
+        for (y in 0..1) {
+          val newX = block.x + x
+          val newZ = block.z + z
+          val newY = block.y + y
+          val block = block.world.getBlockAt(newX, newY, newZ)
+          if (block.type == Material.WATER) {
+            blocks.add(block)
+          }
+        }
+      }
+    }
+
+    return blocks
   }
 
   fun getLavaBlocksUnder(block: Block): List<Block> {
